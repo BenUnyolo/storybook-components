@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./household-card.css";
+import "./household-card.scss";
 import HouseholdClose from "../assets/household/closeSVG";
 import HouseholdHead from "../assets/household/headSVG";
 
@@ -10,10 +10,10 @@ export const HouseholdCard = () => {
 
   return (
     <form className="household-card">
-      <div className="household-card__head-item">
+      <div className="household-card__head-box">
         <HouseholdHead />
       </div>
-      <div className="household-card__firstname-item">
+      <div className="household-card__firstname-box">
         <label htmlFor="firstname-input" className="visually-hidden">
           First Name
         </label>
@@ -23,13 +23,13 @@ export const HouseholdCard = () => {
           placeholder="First name*"
         ></input>
       </div>
-      <div className="household-card__lastname-item">
+      <div className="household-card__lastname-box">
         <label htmlFor="lastname-input" className="visually-hidden">
           Last Name
         </label>
         <input type="text" id="lastname-input" placeholder="Last name*"></input>
       </div>
-      <div className="household-card__birthdate-item">
+      <div className="household-card__birthdate-box">
         <label htmlFor="date-input" className="visually-hidden">
           Date of Birth
         </label>
@@ -47,7 +47,7 @@ export const HouseholdCard = () => {
           }}
         ></input>
       </div>
-      <div className="household-card__pronoun-item">
+      <div className="household-card__pronoun-box">
         <label htmlFor="pronoun-input" className="visually-hidden">
           Pronoun
         </label>
@@ -61,7 +61,7 @@ export const HouseholdCard = () => {
           <option>Other</option>
         </select>
       </div>
-      <div className="household-card__relationship-item">
+      <div className="household-card__relationship-box">
         <label htmlFor="relationship-input" className="visually-hidden">
           Relationship
         </label>
@@ -75,14 +75,16 @@ export const HouseholdCard = () => {
           <option>Child</option>
         </select>
       </div>
-      <div className="household-card__dependentcheck-item">
-        <label htmlFor="dependent-input">Dependent</label>
+      <div className="household-card__dependentcheck-box">
+        <label htmlFor="dependent-input" className="checkbox-label">
+          Dependent
+        </label>
         <span onClick={() => setDependentCheck(!dependentCheck)}>
           <input type="checkbox" checked={dependentCheck} />
           <span></span>
         </span>
       </div>
-      <div className="household-card__close-item">
+      <div className="household-card__close-box">
         <HouseholdClose />
       </div>
     </form>

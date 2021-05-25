@@ -1,0 +1,91 @@
+// COLOURS
+$primary-color: #003946;
+$hover-color: #33616b;
+$focus-color: #5e8188;
+$disabled-color: #c8c8c8;
+$disabled-text-color: #424242;
+
+.button {
+  // typography
+  font-family: "Open Sans", sans-serif;
+  font-weight: 800;
+  font-style: italic;
+  font-size: 16px;
+  line-height: 26px;
+  // structure
+  background-color: transparent;
+  border: 0px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 7px 19px;
+
+  &--primary {
+    background-color: $primary-color;
+    color: #fff;
+
+    .arrow-path {
+      fill: #fff;
+    }
+
+    &:hover {
+      background-color: $hover-color;
+    }
+
+    &:focus {
+      background-color: $focus-color;
+    }
+
+    &:disabled {
+      background-color: $disabled-color;
+      color: $disabled-text-color;
+
+      .arrow-path {
+        fill: $disabled-text-color;
+      }
+    }
+  }
+
+  &--secondary {
+    border: 1px solid $primary-color;
+    color: $primary-color;
+
+    .arrow-path {
+      fill: $primary-color;
+    }
+
+    &:hover {
+      border-color: $hover-color;
+      color: $hover-color;
+
+      .arrow-path {
+        fill: $hover-color;
+      }
+    }
+
+    &:focus {
+      border-color: $focus-color;
+      color: $focus-color;
+
+      .arrow-path {
+        fill: $focus-color;
+      }
+    }
+
+    &:disabled {
+      border-color: $disabled-color;
+      color: $disabled-text-color;
+
+      .arrow-path {
+        fill: $disabled-text-color;
+      }
+    }
+  }
+}
+
+.arrow {
+  // TODO double check
+  margin-right: 12px;
+}

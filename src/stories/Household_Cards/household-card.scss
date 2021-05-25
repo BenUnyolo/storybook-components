@@ -1,0 +1,195 @@
+* {
+  box-sizing: border-box;
+  font-family: Open Sans;
+}
+
+.household-card {
+  background-color: #fff;
+  width: 981px;
+  height: 176px;
+  border: 1px solid #003946;
+  box-shadow: 0px 5px 10px rgba(53, 97, 107, 0.1);
+  border-radius: 10px;
+  display: grid;
+  grid-template-rows: 1fr 44px 24px 44px 1fr;
+  grid-template-columns: 64px 249px 249px 283px 1fr;
+  grid-gap: 0px 16px;
+
+  %standard-input,
+  input[type="text"] {
+    width: 100%;
+    height: 100%;
+    padding: 0.5rem 1rem;
+    border: 1px solid #dfdfdf;
+    box-shadow: 0px 4px 30px 10px rgba(57, 53, 107, 0.05);
+    border-radius: 10px;
+
+    font-style: italic;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 28px;
+    color: #424242;
+  }
+
+  select {
+    @extend %standard-input;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: #fff;
+    background-image: url("../assets/household/dropdown.svg");
+    background-repeat: no-repeat;
+    background-position-x: calc(100% - 1rem);
+    background-position-y: 50%;
+    color: #6b6b6b;
+  }
+
+  // setting text colour for option input
+  %text-color-main {
+    color: red;
+  }
+  & ::placeholder {
+    @extend %text-color-main;
+    opacity: 1;
+  }
+  :-ms-input-placeholder,
+  ::-ms-input-placeholder {
+    @extend %text-color-main;
+  }
+
+  input[type="date"] {
+    @extend %standard-input;
+
+    // setting text colour
+    &::-webkit-datetime-edit {
+      color: #6b6b6b;
+    }
+
+    // removing default calendar icon
+    &::-webkit-calendar-picker-indicator {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background: transparent;
+    }
+  }
+
+  #date-input {
+    background-image: url("../assets/household/calendar.svg");
+    background-repeat: no-repeat;
+    background-position-x: calc(100% - 1rem);
+    background-position-y: 50%;
+  }
+
+  .checkbox-label {
+    font-weight: 700;
+    color: #424242;
+  }
+}
+
+input[type="checkbox"] {
+  display: none;
+
+  + span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -1px;
+    width: 18px;
+    height: 18px;
+    margin: -1px 4px 0 14px;
+    vertical-align: middle;
+    border: 2px solid #003946;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  &:checked + span::before {
+    content: "✓";
+    color: #003946;
+  }
+}
+
+%card-top-row {
+  grid-row: 2 / 3;
+}
+
+%card-bottom-row {
+  grid-row: 4 / 5;
+}
+
+.household-card__head-box {
+  @extend %card-top-row;
+  grid-column: 2 / 1;
+  border: 1px solid red;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 4px;
+}
+
+.household-card__firstname-box {
+  @extend %card-top-row;
+  grid-column: 3 / 2;
+  border: 1px solid red;
+}
+
+.household-card__lastname-box {
+  @extend %card-top-row;
+  grid-column: 4 / 3;
+  border: 1px solid red;
+}
+
+.household-card__birthdate-box {
+  @extend %card-top-row;
+  grid-column: 5 / 4;
+  border: 1px solid red;
+}
+
+.household-card__pronoun-box {
+  @extend %card-bottom-row;
+  grid-column: 2 / 3;
+  border: 1px solid red;
+}
+
+.household-card__pronoun-box {
+  @extend %card-bottom-row;
+  grid-column: 2 / 3;
+  border: 1px solid red;
+}
+
+.household-card__relationship-box {
+  @extend %card-bottom-row;
+  grid-column: 3 / 4;
+  border: 1px solid red;
+}
+
+.household-card__dependentcheck-box {
+  @extend %card-bottom-row;
+  grid-column: 4 / 5;
+  border: 1px solid red;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.household-card__close-box {
+  grid-row: 3 / 4;
+  grid-column: 5 / 6;
+  border: 1px solid red;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* hidden for UI, used by screen readers */
+.visually-hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+}

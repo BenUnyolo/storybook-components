@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./button.css";
+import "./button.scss";
 import ButtonArrow from "../assets/button/arrowSVG";
 
 export const Button = ({ type, label, disabled, arrow, ...props }) => {
