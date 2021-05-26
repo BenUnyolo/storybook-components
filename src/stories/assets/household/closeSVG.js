@@ -1,10 +1,9 @@
 import React from "react";
 
-const HouseholdClose = (props) => {
-  const { className } = props;
+const HouseholdClose = () => {
   return (
     <svg
-      className={className}
+      className="household-close"
       viewBox="0 0 12 12"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

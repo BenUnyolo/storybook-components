@@ -15,7 +15,7 @@ $disabled-text-color: #424242;
   font-family: "Open Sans", "Segoe UI", Tahoma, sans-serif;
   font-weight: 800;
   font-style: italic;
-  font-size: 16px;
+  font-size: 1rem;
   line-height: calculateRem(26px);
   // structure
   background-color: transparent;
@@ -92,4 +92,6 @@ $disabled-text-color: #424242;
 
 .arrow {
   margin-right: calculateRem(12px);
+  width: calculateRem(16px);
+  height: calculateRem(17px);
 }

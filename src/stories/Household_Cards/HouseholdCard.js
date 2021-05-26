@@ -11,7 +11,7 @@ export const HouseholdCard = (props) => {
   return (
     <form className="household-card">
       <div className="household-card__head-box">
-        <HouseholdHead className="household-head" />
+        <HouseholdHead />
       </div>
       <div className="household-card__firstname-box">
         <label htmlFor="firstname-input" className="visually-hidden">
@@ -86,7 +86,7 @@ export const HouseholdCard = (props) => {
       </div>
       <div className="household-card__close-box">
         <div onClick={props.action("close-card")}>
-          <HouseholdClose className="household-close" />
+          <HouseholdClose />
         </div>
       </div>
     </form>
