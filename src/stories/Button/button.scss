@@ -5,13 +5,18 @@ $focus-color: #5e8188;
 $disabled-color: #c8c8c8;
 $disabled-text-color: #424242;
 
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return $remSize * 1rem;
+}
+
 .button {
   // typography
-  font-family: "Open Sans", sans-serif;
+  font-family: "Open Sans", "Segoe UI", Tahoma, sans-serif;
   font-weight: 800;
   font-style: italic;
   font-size: 16px;
-  line-height: 26px;
+  line-height: calculateRem(26px);
   // structure
   background-color: transparent;
   border: 0px;
@@ -20,7 +25,7 @@ $disabled-text-color: #424242;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 7px 19px;
+  padding: calculateRem(7px) calculateRem(19px);
 
   &--primary {
     background-color: $primary-color;
@@ -86,6 +91,5 @@ $disabled-text-color: #424242;
 }
 
 .arrow {
-  // TODO double check
-  margin-right: 12px;
+  margin-right: calculateRem(12px);
 }

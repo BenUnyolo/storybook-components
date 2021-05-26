@@ -1,20 +1,107 @@
 * {
   box-sizing: border-box;
-  font-family: Open Sans;
+  font-family: "Open Sans", "Segoe UI", Tahoma, sans-serif;
 }
+
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return $remSize * 1rem;
+}
+
+$input-text-color: #6b6b6b;
 
 .household-card {
   background-color: #fff;
-  width: 981px;
-  height: 176px;
+  width: calculateRem(981px);
+  height: calculateRem(176px);
   border: 1px solid #003946;
   box-shadow: 0px 5px 10px rgba(53, 97, 107, 0.1);
   border-radius: 10px;
   display: grid;
-  grid-template-rows: 1fr 44px 24px 44px 1fr;
-  grid-template-columns: 64px 249px 249px 283px 1fr;
-  grid-gap: 0px 16px;
+  // grid-template-rows: 1fr 44px 24px 44px 1fr;
+  // grid-template-columns: 64px 249px 249px 283px 1fr;
+  grid-template-rows: 1fr 2.75rem 1.5rem 2.75rem 1fr;
+  grid-template-columns: 4rem 15.5rem 15.5rem 17.75rem 1fr;
+  grid-gap: 0 1rem;
 
+  %card-top-row {
+    grid-row: 2 / 3;
+  }
+
+  %card-bottom-row {
+    grid-row: 4 / 5;
+  }
+
+  &__head-box {
+    @extend %card-top-row;
+    grid-column: 2 / 1;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: calculateRem(4px);
+  }
+
+  &__firstname-box {
+    @extend %card-top-row;
+    grid-column: 3 / 2;
+  }
+
+  &__lastname-box {
+    @extend %card-top-row;
+    grid-column: 4 / 3;
+  }
+
+  &__birthdate-box {
+    @extend %card-top-row;
+    grid-column: 5 / 4;
+  }
+
+  &__pronoun-box {
+    @extend %card-bottom-row;
+    grid-column: 2 / 3;
+  }
+
+  &__pronoun-box {
+    @extend %card-bottom-row;
+    grid-column: 2 / 3;
+  }
+
+  &__relationship-box {
+    @extend %card-bottom-row;
+    grid-column: 3 / 4;
+  }
+
+  &__dependentcheck-box {
+    @extend %card-bottom-row;
+    grid-column: 4 / 5;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  &__close-box {
+    grid-row: 3 / 4;
+    grid-column: 5 / 6;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .household-head {
+    height: calculateRem(30px);
+    width: calculateRem(28px);
+  }
+
+  .household-close {
+    height: calculateRem(12px);
+    width: calculateRem(12px);
+  }
+}
+
+form {
   %standard-input,
   input[type="text"] {
     width: 100%;
@@ -26,9 +113,18 @@
 
     font-style: italic;
     font-weight: 800;
-    font-size: 18px;
-    line-height: 28px;
-    color: #424242;
+    font-size: calculateRem(18px);
+    line-height: calculateRem(28px);
+  }
+
+  // text color for placholder
+  & ::placeholder {
+    color: $input-text-color;
+    opacity: 1;
+  }
+  & :-ms-input-placeholder,
+  ::-ms-input-placeholder {
+    color: $input-text-color;
   }
 
   select {
@@ -41,20 +137,7 @@
     background-repeat: no-repeat;
     background-position-x: calc(100% - 1rem);
     background-position-y: 50%;
-    color: #6b6b6b;
-  }
-
-  // setting text colour for option input
-  %text-color-main {
-    color: red;
-  }
-  & ::placeholder {
-    @extend %text-color-main;
-    opacity: 1;
-  }
-  :-ms-input-placeholder,
-  ::-ms-input-placeholder {
-    @extend %text-color-main;
+    color: $input-text-color;
   }
 
   input[type="date"] {
@@ -62,7 +145,7 @@
 
     // setting text colour
     &::-webkit-datetime-edit {
-      color: #6b6b6b;
+      color: $input-text-color;
     }
 
     // removing default calendar icon
@@ -84,104 +167,29 @@
     font-weight: 700;
     color: #424242;
   }
-}
 
-input[type="checkbox"] {
-  display: none;
+  input[type="checkbox"] {
+    display: none;
 
-  + span {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: -1px;
-    width: 18px;
-    height: 18px;
-    margin: -1px 4px 0 14px;
-    vertical-align: middle;
-    border: 2px solid #003946;
-    border-radius: 4px;
-    cursor: pointer;
+    + span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      top: -1px;
+      width: calculateRem(18px);
+      height: calculateRem(18px);
+      margin: -1px 4px 0 14px;
+      vertical-align: middle;
+      border: 2px solid #003946;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    &:checked + span::before {
+      content: "✓";
+      color: #003946;
+    }
   }
-
-  &:checked + span::before {
-    content: "✓";
-    color: #003946;
-  }
-}
-
-%card-top-row {
-  grid-row: 2 / 3;
-}
-
-%card-bottom-row {
-  grid-row: 4 / 5;
-}
-
-.household-card__head-box {
-  @extend %card-top-row;
-  grid-column: 2 / 1;
-  border: 1px solid red;
-
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding-right: 4px;
-}
-
-.household-card__firstname-box {
-  @extend %card-top-row;
-  grid-column: 3 / 2;
-  border: 1px solid red;
-}
-
-.household-card__lastname-box {
-  @extend %card-top-row;
-  grid-column: 4 / 3;
-  border: 1px solid red;
-}
-
-.household-card__birthdate-box {
-  @extend %card-top-row;
-  grid-column: 5 / 4;
-  border: 1px solid red;
-}
-
-.household-card__pronoun-box {
-  @extend %card-bottom-row;
-  grid-column: 2 / 3;
-  border: 1px solid red;
-}
-
-.household-card__pronoun-box {
-  @extend %card-bottom-row;
-  grid-column: 2 / 3;
-  border: 1px solid red;
-}
-
-.household-card__relationship-box {
-  @extend %card-bottom-row;
-  grid-column: 3 / 4;
-  border: 1px solid red;
-}
-
-.household-card__dependentcheck-box {
-  @extend %card-bottom-row;
-  grid-column: 4 / 5;
-  border: 1px solid red;
-
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.household-card__close-box {
-  grid-row: 3 / 4;
-  grid-column: 5 / 6;
-  border: 1px solid red;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 /* hidden for UI, used by screen readers */

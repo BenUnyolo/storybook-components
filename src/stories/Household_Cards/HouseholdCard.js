@@ -3,7 +3,7 @@ import "./household-card.scss";
 import HouseholdClose from "../assets/household/closeSVG";
 import HouseholdHead from "../assets/household/headSVG";
 
-export const HouseholdCard = () => {
+export const HouseholdCard = (props) => {
   // for setting date's input type to allow placeholder text
   const [dateInputType, setDateInputType] = useState("text");
   const [dependentCheck, setDependentCheck] = useState(false);
@@ -11,7 +11,7 @@ export const HouseholdCard = () => {
   return (
     <form className="household-card">
       <div className="household-card__head-box">
-        <HouseholdHead />
+        <HouseholdHead className="household-head" />
       </div>
       <div className="household-card__firstname-box">
         <label htmlFor="firstname-input" className="visually-hidden">
@@ -51,10 +51,8 @@ export const HouseholdCard = () => {
         <label htmlFor="pronoun-input" className="visually-hidden">
           Pronoun
         </label>
-        <select name="pronoun" placeholder="pronoun" id="pronoun-input">
-          <option disabled selected>
-            Pronoun*
-          </option>
+        <select name="pronoun" id="pronoun-input" defaultValue="Pronoun*">
+          <option disabled>Pronoun*</option>
           <option>He</option>
           <option>She</option>
           <option>They</option>
@@ -65,10 +63,12 @@ export const HouseholdCard = () => {
         <label htmlFor="relationship-input" className="visually-hidden">
           Relationship
         </label>
-        <select name="relationship" id="relationship-input">
-          <option disabled selected>
-            Relationship to you*
-          </option>
+        <select
+          name="relationship"
+          id="relationship-input"
+          defaultValue="Relationship to you*"
+        >
+          <option disabled>Relationship to you*</option>
           <option>Partner</option>
           <option>Parent</option>
           <option>Sibling</option>
@@ -85,7 +85,9 @@ export const HouseholdCard = () => {
         </span>
       </div>
       <div className="household-card__close-box">
-        <HouseholdClose />
+        <div onClick={props.action("close-card")}>
+          <HouseholdClose className="household-close" />
+        </div>
       </div>
     </form>
   );

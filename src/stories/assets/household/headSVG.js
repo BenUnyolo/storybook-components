@@ -1,8 +1,10 @@
 import React from "react";
 
 const HouseholdHead = (props) => {
+  const { className } = props;
   return (
     <svg
+      className={className}
       width="28"
       height="30"
       viewBox="0 0 28 30"
